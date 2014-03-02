@@ -1,0 +1,57 @@
+/*=
+===
+=== RESPONSIVE
+===
+=*/
+
+@media (max-width: 720px)
+{
+
+    /* MENU */
+
+    div.menu ul
+    {
+        width: 100%;
+        text-align: center;
+    }
+
+    div.menu li
+    {
+        padding: 8px 0px;
+    }
+
+    div.menu a
+    {
+        /*font-size: 12pt;*/
+        padding: 8px 8px;
+    }
+
+    div.menu a.symbol
+    {
+        font-size: 12pt;
+        padding: 8px 32px;
+    }
+
+    /* CONTENT */
+
+    div.content
+    {
+        padding: 0 5%;
+    }
+    
+    h1
+    {
+        font-size: 24pt;
+    }
+    
+    h2
+    {
+        font-size: 16pt;
+    }
+    
+    p
+    {
+        font-size: 12pt;
+    }
+    
+}
