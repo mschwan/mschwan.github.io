@@ -8,7 +8,9 @@
         <link rel="icon" href="content/image/favicon.png" type="image/png">
         <link rel="stylesheet" href="font_awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/widgets.css">
         <!--<link rel="stylesheet" href="css/responsive.css" media="all">-->
+        <script type="text/javascript" src=""></script>
     
     </head>
     
@@ -20,7 +22,13 @@
                 <ul>
                     <li><a href="http://mschwan.github.io/" class="title">Maddin´s<span>Level-Design</span></a></li>
                     <li><a href="http://mschwan.github.io/"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="article.html"><i class="fa fa-book"></i> Article</a></li>
+                    <li><a onclick="toggle_visibility('sub-menu');"><i class="fa fa-book"></i> Article</a>
+                        <ul id="sub-menu">
+                            <li><a href="">Article 1</a></li>
+                            <li><a href="">Article 2</a></li>
+                            <li><a href="">Article 3</a></li>
+                        </ul>
+                    </li>
                     <li><a href="gallery.html"><i class="fa fa-picture-o"></i> Gallery</a></li>
                     <li><a href="about.html"><i class="fa fa-user"></i> About</a></li>
                 </ul>
@@ -46,7 +54,7 @@
                             <h1>Header 1</h1>
                                 <h2>Header 2</h2>
                                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. <a class="link" href="index.html">Stet clita</a> kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                                    <p><a class="link" href="index.html">Lorem ipsum</a> dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                    <p><a class="link tooltip" href="index.html" tooltip="Example link">Lorem ipsum</a> dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                                 <h2>Header 2</h2>
                                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                         </div>
@@ -74,10 +82,12 @@
                         <div class="side-widget-item">
                             <h2>Item 3</h2>
                             <p>At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                            <a class="button blue" href="">Lorem</a>
                         </div>
                         <div class="side-widget-item">
                             <h2>Item 4</h2>
                             <p>At vero eos et accusam et justo duo dolores et ea rebum, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                            <a class="button red" href="">Ipsum</a>
                         </div>
                     </div>
                     
@@ -91,12 +101,12 @@
             <p>Maddin´s Level-Design &copy; 2014 Martin Schwan</p>
             <span>Created with the power of:</span>
             <p class="ads">
-                <a href="http://pages.github.com/"><i class="fa fa-github-alt"></i></a>
-                <a href="http://fortawesome.github.io/Font-Awesome/"><i class="fa fa-flag"></i></a>
-                <a href="http://brackets.io/"><i class="fa fa-edit"></i></a>
-                <a href="https://www.mozilla.org/firefox/?icn=tabz"><i class="fa fa-compass"></i></a>
-                <a><i class="fa fa-html5"></i></a>
-                <a><i class="fa fa-css3"></i></a>
+                <a class="tooltip" href="http://pages.github.com/" tooltip="Github Pages"><i class="fa fa-github-alt"></i></a>
+                <a class="tooltip" href="http://fortawesome.github.io/Font-Awesome/" tooltip="Font Awesome"><i class="fa fa-flag"></i></a>
+                <a class="tooltip" href="http://brackets.io/" tooltip="Brackets"><i class="fa fa-edit"></i></a>
+                <a class="tooltip" href="https://www.mozilla.org/firefox/?icn=tabz" tooltip="Firefox"><i class="fa fa-compass"></i></a>
+                <a class="tooltip" tooltip="HTML5"><i class="fa fa-html5"></i></a>
+                <a class="tooltip" tooltip="CSS3"><i class="fa fa-css3"></i></a>
             </p>
         </div>
             
