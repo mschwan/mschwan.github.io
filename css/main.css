@@ -43,19 +43,44 @@ div.menu ul
 div.menu li
 {
     position: relative;
-    /*cursor: pointer;*/
 
     /*border: 1px solid hsla(120,100%,50%,0.5);*/
 }
 
-div.menu ul li:active ul
-{
-    /*display: block;*/
-}
-
-div.menu ul ul
+div.menu input
 {
     display: none;
+}
+
+div.menu input + label
+{
+    color: #888;
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+div.menu input + label:hover,
+div.menu input:checked + label,
+div.menu a:hover
+{
+    color: #eee;
+}
+
+div.menu input + label + ul
+{
+    opacity: 0;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+div.menu input:checked + label + ul
+{
+    opacity: 1;
+    max-height: 120px; /* apply to actually needed height! */
+    font-size: 12pt;
+    transition: all 0.2s;
 }
 
 div.menu i
@@ -70,14 +95,9 @@ div.menu a
     outline: none;
     padding: 8px 16px;
     text-decoration: none;
-    transition: 0.2s;
+    transition: all 0.2s;
     
     /*background-color: hsla(210,100%,50%,0.5);*/
-}
-
-div.menu a:hover
-{
-    color: #eee;
 }
 
 div.menu a.title
