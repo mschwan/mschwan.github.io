@@ -79,7 +79,6 @@ div.menu input:checked + label + ul
 {
     opacity: 1;
     max-height: 120px; /* apply to actually needed height! */
-    font-size: 12pt;
     transition: all 0.2s;
 }
 
