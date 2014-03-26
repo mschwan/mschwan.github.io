@@ -6,7 +6,7 @@
 
 /* TOOLTIP */
 
-.tooltip:after
+.widget-tooltip:after
 {
     background-color: #111;
     border-radius: 4px;
@@ -16,6 +16,7 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 10pt;
     font-weight: 400;
+    margin-top: 2px;
     opacity: 0;
     padding: 4px 8px;
     pointer-events: none;
@@ -26,7 +27,7 @@
     z-index: 10;
 }
 
-.tooltip:hover:after
+.widget-tooltip:hover:after
 {
     opacity: 1;
     transform: none;
@@ -120,7 +121,7 @@ span.modal label
 
 span.modal label.modal-overlay
 {
-    display: none;
+    /*display: none;*/
     position: fixed;
     width: 100%;
     height: 100%;
@@ -128,27 +129,126 @@ span.modal label.modal-overlay
     left: 0;
     background-color: rgba(10,10,10,0.75);
     z-index: 90;
+    
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s ease 0.3s,
+                opacity 0.3s ease;
+}
+
+span.modal label.modal-close
+{
+    position: absolute;
+    background-color: #888;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    right: -12px;
+    top: -12px;
+    font-size: 14pt;
+    box-shadow: 0px 4px #777;
+    transition: all 0.1s;
+}
+
+span.modal label.modal-close:active
+{
+    top: -8px;
+    box-shadow: 0px 0px #777;
 }
 
 span.modal div.modal-content
 {
-    display: none;
+    display: block;
     border-radius: 4px;
     position: absolute;
     width: 50%;
+    height: auto;
     min-height: 50%;
     top: 0;
     left: 0;
     margin: 10% 25%;
-    padding: 8px 12px;
+    padding: 16px;
     background-color: #fff;
     z-index: 91;
+    
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s ease 0.3s,
+                opacity 0.3s ease;
 }
 
-span.modal input:checked ~ label.modal-overlay,
-span.modal input:checked ~ div.modal-content
+span.modal input:checked ~ div.modal-content,
+span.modal input:checked ~ label.modal-overlay
+{
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+/* IMAGES */
+
+img.widget-image
 {
     display: block;
+    margin: 4px auto;
+    border-radius: 4px;
+    max-width: 100%;
+    height: auto;
+    
+    /*border: 1px solid blue;*/
 }
 
+/* IMAGE GALLERY */
+
+div.widget-image-gallery
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    
+    /*border: 1px solid red;*/
+}
+
+div.widget-image-gallery div
+{
+    display: inline-block;
+    
+    /*border: 1px solid green;*/
+}
+
+div.widget-image-gallery div img
+{
+    margin: 4px;
+}
+
+/* LINKS */
+
+a.widget-link
+{
+    border-bottom: 1px solid transparent;
+    color: #28d;
+    outline: none;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+a.widget-link:hover
+{
+    border-bottom: 1px solid #28d;
+}
+
+h1 a.widget-link,
+h2 a.widget-link
+{
+    color: inherit;
+    border-bottom: none;
+}
+
+h1 a.widget-link:hover,
+h2 a.widget-link:hover
+{
+    border-bottom: none;
+    color: #28d;
+}
 

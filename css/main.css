@@ -208,32 +208,6 @@ p
     font-size: 12pt;
 }
 
-a.link
-{
-    color: #28d;
-    outline: none;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-a.link:hover
-{
-    color: #17c;
-}
-
-a.article
-{
-    color: inherit;
-    outline: none;
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-a.article:hover
-{
-    color: #17c;
-}
-
 div.side-widget
 {
     display: flex;
