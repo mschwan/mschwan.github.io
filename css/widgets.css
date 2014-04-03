@@ -213,13 +213,16 @@ div.widget-image-gallery
 div.widget-image-gallery div
 {
     display: inline-block;
+    padding: 0px 4px;
+    width: 320px;
+    height: auto;
     
     /*border: 1px solid green;*/
 }
 
 div.widget-image-gallery div img
 {
-    margin: 4px;
+    /*height: auto;*/
 }
 
 /* LINKS */
@@ -252,3 +255,26 @@ h2 a.widget-link:hover
     color: #28d;
 }
 
+/* ICONS */
+
+div.content i.fa
+{
+    margin: 0px 4px;
+}
+
+/* VIDEOS */
+
+div.widget-video video
+{
+    display: block;
+    width: 100%;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+}
+
+div.widget-video div.widget-video-play-pause
+{
+    cursor: pointer;
+}
+}
