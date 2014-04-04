@@ -9,6 +9,7 @@ $(document).ready(function() {
     // testing
     var $video = $(".widget-video").find("video");
     var $playpause = $(".widget-video").find(".widget-video-play-pause");
+    var $seek = $(".widget-video").find(".widget-video-seek");
     var $iconPlay = $("<i>", {
         class: "fa fa-play"
     });
@@ -18,7 +19,12 @@ $(document).ready(function() {
     
     $video.each(function() {
         $(this)[0].removeAttribute("controls");
-    })
+    });
+    
+    $seek.each(function() {
+        $(this).css("background-color", "#888")
+                .css("color","#fff");
+    });
     
     $playpause.on("click", function() {
         if($(this).closest(".widget-video-controls").siblings("video")[0].paused) {

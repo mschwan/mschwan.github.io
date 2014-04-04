@@ -271,9 +271,36 @@ div.widget-video video
     height: auto;
     outline: none;
     cursor: pointer;
+    /*overflow: hidden;*/
+    border-radius: 4px;
 }
 
-div.widget-video div.widget-video-play-pause
+div.widget-video-play-pause
 {
     cursor: pointer;
+}
+
+div.widget-video-seek
+{
+    position: relative;
+    height: 12pt;
+}
+
+div.widget-video-seek-loaded
+{
+    position: relative;
+    top: 0pt;
+    width: 90%;
+    height: 12pt;
+    background-color: #777;
+}
+
+div.widget-video-seek-played
+{
+    position: relative;
+    top: -12pt;
+    left: 0;
+    width: 10px;
+    height: 12pt;
+    background-color: #aaa;
 }
