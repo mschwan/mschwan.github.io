@@ -284,6 +284,8 @@ div.widget-video-seek
 {
     position: relative;
     height: 12pt;
+    /*cursor: col-resize;*/
+    background-color: #777;
 }
 
 div.widget-video-seek-loaded
@@ -292,7 +294,7 @@ div.widget-video-seek-loaded
     top: 0pt;
     width: 90%;
     height: 12pt;
-    background-color: #777;
+    background-color: #888;
 }
 
 div.widget-video-seek-played
