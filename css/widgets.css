@@ -284,8 +284,9 @@ div.widget-video-seek
 {
     position: relative;
     height: 12pt;
-    border-radius: 6pt;
+    border-radius: 0.5em;
     cursor: col-resize;
     background-color: #777;
+    overflow: hidden;
 }
 

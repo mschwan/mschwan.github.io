@@ -106,6 +106,10 @@ div.menu a.title
     font-size: 20pt;
     font-weight: 700;
     text-align: center;
+    background-image: url(../content/images/swan.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     
     /*background-color: hsla(290,100%,50%,0.5);*/
 }

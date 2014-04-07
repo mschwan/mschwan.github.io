@@ -17,50 +17,32 @@ $(document).ready(function() {
         class: "fa fa-pause"
     });
     
-    $seek.slider({
-        min: 0,
-        max: 100,
-        step: 0.01,
-        value: 0,
-        range: "min",
-        animate: "fast",
-        slide: function(event, ui) {
-            $(this).closest(".widget-video-controls").find(".widget-video-endtime").text(ui.value);
-            $(this).closest(".widget-video").find("video")[0].currentTime = ui.value;
-        }
+    $video.each(function() {
+        var duration = $(this)[0].duration;
+        $seek.slider({
+            min: 0,
+            max: duration,
+            step: 0.01,
+            value: 0,
+            range: "min",
+            animate: "fast",
+            slide: function(event, ui) {
+                $(this).closest(".widget-video").find("video")[0].currentTime = ui.value;
+            }
+        });
     });
     
     $video.each(function() {
         $(this)[0].removeAttribute("controls");
+        $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
         $(this)[0].addEventListener("timeupdate", function() {
-            $(this).closest(".widget-video").find(".widget-video-currenttime").text($(this)[0].currentTime);
+            $(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
         });
+        $(this)[0].addEventListener("ended", function() {
+            $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
+        });
     });
-    
-    
-    /*var offset;
-    var relativePosition;
-    var width;
-    var rect;
-    var maxWidth;
-    var cssWidth;
-    
-    $seek.on("click", function(event) {
-        rect = $(this)[0].getBoundingClientRect();
-        maxWidth = Math.round(rect.right - rect.left);
-        
-        var currenttime = $(this).closest(".widget-video").find("video")[0].duration;
-        $(this).closest(".widget-video-controls").find(".widget-video-currenttime").text(currenttime);
-
-        offset = $(this).offset();
-        relativePosition = Math.round(event.pageX - offset.left);
-
-        width = Math.round((relativePosition / maxWidth) * 100);
-        cssWidth = width + "%";
-        $(this).closest(".widget-video-controls").find(".widget-video-endtime").text(width);
-        $(this).find(".widget-video-seek-played").css("width", cssWidth);
-    });*/
     
     $playpause.on("click", function() {
         if($(this).closest(".widget-video-controls").siblings("video")[0].paused) {
