@@ -18,10 +18,11 @@ $(document).ready(function() {
     });
     
     $video.each(function() {
-        var duration = $(this)[0].duration;
-        $seek.slider({
+        $(this)[0].removeAttribute("controls");
+        $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+        $(this).closest(".widget-video").find(".widget-video-seek").slider({
             min: 0,
-            max: duration,
+            max: $(this)[0].duration,
             step: 0.01,
             value: 0,
             range: "min",
@@ -30,11 +31,6 @@ $(document).ready(function() {
                 $(this).closest(".widget-video").find("video")[0].currentTime = ui.value;
             }
         });
-    });
-    
-    $video.each(function() {
-        $(this)[0].removeAttribute("controls");
-        $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
         $(this)[0].addEventListener("timeupdate", function() {
             $(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
