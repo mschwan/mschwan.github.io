@@ -290,3 +290,18 @@ div.widget-video-seek
     overflow: hidden;
 }
 
+div.widget-video-mute
+{
+    cursor: pointer;
+}
+
+div.widget-video-volume
+{
+    position: relative;
+    height: 5em;
+    border-radius: 0.5em;
+    cursor: row-resize;
+    background-color: #777;
+    overflow: hidden;
+}
+

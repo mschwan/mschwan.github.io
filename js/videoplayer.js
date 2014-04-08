@@ -6,19 +6,36 @@
 
 $(document).ready(function() {
     
-    // testing
+    /*  VARIABLES
+        ---------  */
     var $video = $(".widget-video").find("video");
     var $playpause = $(".widget-video").find(".widget-video-play-pause");
     var $seek = $(".widget-video").find(".widget-video-seek");
+    var $mute = $(".widget-video").find(".widget-video-mute");
+    // FIXME: The following icon variables can only be used at one place in the DOM, otherwise some will be destroyed!
     var $iconPlay = $("<i>", {
         class: "fa fa-play"
     });
     var $iconPause = $("<i>", {
         class: "fa fa-pause"
     });
+    var $iconMute = $("<i>", {
+        class: "fa fa-volume-off"
+    });
+    var $iconVolume = $("<i>", {
+        class: "fa fa-volume-up"
+    });
     
+    /*  CONSTRUCTORS
+        ------------  */
     $video.each(function() {
+        // misc
         $(this)[0].removeAttribute("controls");
+        // play pause
+        $(this)[0].addEventListener("ended", function() {
+            $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
+        });
+        // timeline
         $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
         $(this).closest(".widget-video").find(".widget-video-seek").slider({
             min: 0,
@@ -26,6 +43,7 @@ $(document).ready(function() {
             step: 0.01,
             value: 0,
             range: "min",
+            orientation: "horizontal",
             animate: "fast",
             slide: function(event, ui) {
                 $(this).closest(".widget-video").find("video")[0].currentTime = ui.value;
@@ -35,18 +53,56 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
         });
-        $(this)[0].addEventListener("ended", function() {
-            $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
+        // mute
+        if($(this)[0].muted) {
+            $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');
+        }
+        else {
+            $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-up"></i>');
+        }
+        $(this)[0].addEventListener("volumechange", function() {
+            if($(this)[0].muted) {
+                $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');
+            }
+            else {
+                $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-up"></i>');
+            }
+        });
+        // volume
+        $(this).closest(".widget-video").find(".widget-video-volume").slider({
+            min: 0,
+            max: 1,
+            step: 0.01,
+            value: $(this)[0].volume,
+            range: "min",
+            orientation: "vertical",
+            animate: "fast",
+            slide: function(event, ui) {
+                $(this).closest(".widget-video").find("video")[0].volume = Math.pow(ui.value, 2);
+            }
         });
     });
     
+    /*  ACTIONS
+        ------  */
+    $mute.on("click", function() {
+        if($(this).closest(".widget-video-controls").siblings("video")[0].muted) {
+            $(this).closest(".widget-video-controls").siblings("video")[0].muted = false;
+            $(this).html('<i class="fa fa-volume-up"></i>');
+        }
+        else {
+            $(this).closest(".widget-video-controls").siblings("video")[0].muted = true;
+            $(this).html('<i class="fa fa-volume-off"></i>');
+        }
+    });
+    
     $playpause.on("click", function() {
-        if($(this).closest(".widget-video-controls").siblings("video")[0].paused) {
-            $(this).closest(".widget-video-controls").siblings("video")[0].play();
+        if($(this).closest(".widget-video").find("video")[0].paused) {
+            $(this).closest(".widget-video").find("video")[0].play();
             $(this).html('<i class="fa fa-pause"></i>');
         }
         else {
-            $(this).closest(".widget-video-controls").siblings("video")[0].pause();
+            $(this).closest(".widget-video").find("video")[0].pause();
             $(this).html('<i class="fa fa-play"></i>');
         }
     });
@@ -54,11 +110,11 @@ $(document).ready(function() {
     $video.on("click", function() {
         if($(this)[0].paused) {
             $(this)[0].play();
-            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html('<i class="fa fa-pause"></i>');
+            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html($iconPause);
         }
         else {
             $(this)[0].pause();
-            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
+            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html($iconPlay);
         }
     });
     
@@ -82,10 +138,6 @@ $(document).ready(function() {
             }
         }
     });
-    /*.each(function(index, element) {
-        $(element).css("color", "#28d");
-        $(element).text("blablablub");
-    });*/
     
 /*
     // icons
