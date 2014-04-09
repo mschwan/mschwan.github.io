@@ -10,7 +10,7 @@ $(document).ready(function() {
         ---------  */
     var $video = $(".widget-video").find("video");
     var $playpause = $(".widget-video").find(".widget-video-play-pause");
-    var $seek = $(".widget-video").find(".widget-video-seek");
+    //var $seek = $(".widget-video").find(".widget-video-seek");
     var $mute = $(".widget-video").find(".widget-video-mute");
     // FIXME: The following icon variables can only be used at one place in the DOM, otherwise some will be destroyed!
     var $iconPlay = $("<i>", {
@@ -36,7 +36,19 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
         });
         // timeline
-        $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+        $(this).closest(".widget-video").find(".widget-video-loaded").slider({
+            min: 0,
+            max: $(this)[0].duration,
+            step: 0.01,
+            value: 0,
+            range: "min",
+            orientation: "horizontal",
+            animate: "fast",
+            disabled: "true"
+        });
+        $(this)[0].addEventListener("progress", function() {
+            $(this).closest(".widget-video").find(".widget-video-loaded").slider("value", $(this)[0].buffered.end(0));
+        });
         $(this).closest(".widget-video").find(".widget-video-seek").slider({
             min: 0,
             max: $(this)[0].duration,
@@ -53,6 +65,7 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
         });
+        $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
         // mute
         if($(this)[0].muted) {
             $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');

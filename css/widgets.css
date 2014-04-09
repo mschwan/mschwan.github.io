@@ -280,6 +280,16 @@ div.widget-video-play-pause
     cursor: pointer;
 }
 
+div.widget-video-loaded
+{
+    position: relative;
+    height: 12pt;
+    border-radius: 0.5em;
+    cursor: col-resize;
+    background-color: #777;
+    overflow: hidden;
+}
+
 div.widget-video-seek
 {
     position: relative;
