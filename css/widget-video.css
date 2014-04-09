@@ -6,7 +6,10 @@
 
 .ui-slider
 {
+    display: block;
 	position: relative;
+    background-color: #777;
+    border-radius: 4px;
 }
 
 .ui-slider .ui-slider-handle
@@ -29,12 +32,12 @@
 	height: 12pt;
 	display: block;
 	background-color: #aaa;
-    border-radius: 0.5em;
+    border-radius: 4px;
 }
 
 .ui-slider-horizontal
 {
-	height: inherit;
+	height: 1em;
 }
 
 .ui-slider-horizontal .ui-slider-handle

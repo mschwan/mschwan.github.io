@@ -36,19 +36,6 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
         });
         // timeline
-        $(this).closest(".widget-video").find(".widget-video-loaded").slider({
-            min: 0,
-            max: $(this)[0].duration,
-            step: 0.01,
-            value: 0,
-            range: "min",
-            orientation: "horizontal",
-            animate: "fast",
-            disabled: "true"
-        });
-        $(this)[0].addEventListener("progress", function() {
-            $(this).closest(".widget-video").find(".widget-video-loaded").slider("value", $(this)[0].buffered.end(0));
-        });
         $(this).closest(".widget-video").find(".widget-video-seek").slider({
             min: 0,
             max: $(this)[0].duration,
