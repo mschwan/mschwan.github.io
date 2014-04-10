@@ -75,7 +75,7 @@ $(document).ready(function() {
             step: 0.01,
             value: $(this)[0].volume,
             range: "min",
-            orientation: "vertical",
+            orientation: "horizontal",
             animate: "fast",
             slide: function(event, ui) {
                 $(this).closest(".widget-video").find("video")[0].volume = Math.pow(ui.value, 2);
@@ -86,12 +86,12 @@ $(document).ready(function() {
     /*  ACTIONS
         ------  */
     $mute.on("click", function() {
-        if($(this).closest(".widget-video-controls").siblings("video")[0].muted) {
-            $(this).closest(".widget-video-controls").siblings("video")[0].muted = false;
+        if($(this).closest(".widget-video").find("video")[0].muted) {
+            $(this).closest(".widget-video").find("video")[0].muted = false;
             $(this).html('<i class="fa fa-volume-up"></i>');
         }
         else {
-            $(this).closest(".widget-video-controls").siblings("video")[0].muted = true;
+            $(this).closest(".widget-video").find("video")[0].muted = true;
             $(this).html('<i class="fa fa-volume-off"></i>');
         }
     });
