@@ -32,6 +32,7 @@ $(document).ready(function() {
     $video.each(function() {
         // misc
         $(this)[0].removeAttribute("controls");
+        //$(this)[0].("preload", "metadata");
         // play pause
         $(this)[0].addEventListener("ended", function() {
             $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
@@ -53,10 +54,12 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
         });
-        $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+        $(this)[0].addEventListener("loadedmetadata", function() {
+            $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+        });
         // loading
         $(this)[0].addEventListener("progress", function() {
-            var buffered = $(this).closest(".widget-video").find("video")[0].buffered.end(0);
+            var buffered = Math.round($(this).closest(".widget-video").find("video")[0].buffered.end(0));
             $(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
         });
         // mute
