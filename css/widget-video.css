@@ -16,7 +16,7 @@
 	width: 1em;
 	height: 1em;
 	cursor: default;
-    background-color: #ddd;
+    background-color: #fff;
     border-radius: 0.75em;
     outline: none;
     display: none;
@@ -28,7 +28,7 @@
 	z-index: 1;
 	height: 12pt;
 	display: block;
-	background-color: #aaa;
+	background-color: #eee;
 }
 
 .ui-slider-horizontal

@@ -13,7 +13,7 @@ $(document).ready(function() {
     //var $seek = $(".widget-video").find(".widget-video-seek");
     var $mute = $(".widget-video").find(".widget-video-mute");
     // FIXME: The following icon variables can only be used at one place in the DOM, otherwise some will be destroyed!
-    var $iconPlay = $("<i>", {
+    /*var $iconPlay = $("<i>", {
         class: "fa fa-play"
     });
     var $iconPause = $("<i>", {
@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
     var $iconVolume = $("<i>", {
         class: "fa fa-volume-up"
-    });
+    });*/
     
     /*  CONSTRUCTORS
         ------------  */
@@ -73,7 +73,7 @@ $(document).ready(function() {
             min: 0,
             max: 1,
             step: 0.01,
-            value: $(this)[0].volume,
+            value: 0.6,
             range: "min",
             orientation: "horizontal",
             animate: "fast",
@@ -110,11 +110,11 @@ $(document).ready(function() {
     $video.on("click", function() {
         if($(this)[0].paused) {
             $(this)[0].play();
-            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html($iconPause);
+            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html('<i class="fa fa-pause"></i>');
         }
         else {
             $(this)[0].pause();
-            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html($iconPlay);
+            $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
         }
     });
     
