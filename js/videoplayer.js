@@ -12,6 +12,7 @@ $(document).ready(function() {
     var $playpause = $(".widget-video").find(".widget-video-play-pause");
     //var $seek = $(".widget-video").find(".widget-video-seek");
     var $mute = $(".widget-video").find(".widget-video-mute");
+    var $fullscreen = $(".widget-video").find(".widget-video-fullscreen");
     // FIXME: The following icon variables can only be used at one place in the DOM, otherwise some will be destroyed!
     /*var $iconPlay = $("<i>", {
         class: "fa fa-play"
@@ -53,6 +54,11 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
         });
         $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+        // loading
+        $(this)[0].addEventListener("progress", function() {
+            var buffered = $(this).closest(".widget-video").find("video")[0].buffered.end(0);
+            $(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
+        });
         // mute
         if($(this)[0].muted) {
             $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');
@@ -104,6 +110,27 @@ $(document).ready(function() {
         else {
             $(this).closest(".widget-video").find("video")[0].pause();
             $(this).html('<i class="fa fa-play"></i>');
+        }
+    });
+    
+    $fullscreen.on("click", function() {
+        if(!document.fullscreenElement || !document.mozFullScreenElement || !document.webkitFullscreenElement) {
+            if ($(this).closest(".widget-video").find("video")[0].requestFullscreen) {
+                $(this).closest(".widget-video").find("video")[0].requestFullscreen();
+            } else if ($(this).closest(".widget-video").find("video")[0].mozRequestFullScreen) {
+                $(this).closest(".widget-video").find("video")[0].mozRequestFullScreen();
+            } else if ($(this).closest(".widget-video").find("video")[0].webkitRequestFullscreen) {
+                $(this).closest(".widget-video").find("video")[0].webkitRequestFullscreen();
+            }
+        }
+        else {
+            if ($(this).closest(".widget-video").find("video")[0].exitFullscreen) {
+                $(this).closest(".widget-video").find("video")[0].exitFullscreen();
+            } else if ($(this).closest(".widget-video").find("video")[0].mozCancelFullScreen) {
+                $(this).closest(".widget-video").find("video")[0].mozCancelFullScreen();
+            } else if ($(this).closest(".widget-video").find("video")[0].webkitExitFullscreen) {
+                $(this).closest(".widget-video").find("video")[0].webkitExitFullscreen();
+            }
         }
     });
     

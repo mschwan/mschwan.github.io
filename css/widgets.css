@@ -281,19 +281,32 @@ div.widget-video-endtime
 }
 
 div.widget-video-mute,
-div.widget-video-volume
+div.widget-video-volume,
+div.widget-video-fullscreen
 {
+    display: inline-block;
     position: relative;
     margin-left: auto;
     margin-right: 0;
+    height: 2em;
+    text-align: center;
     
-    /*background-color: red;*/
+    border: 1px solid red;
 }
 
 div.widget-video-play-pause:hover,
-div.widget-video-mute:hover
+div.widget-video-mute:hover,
+div.widget-video-fullscreen:hover
 {
     color: #eee;
+}
+
+div.widget-video-fullscreen
+{
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+    transition: color 0.2s;
 }
 
 div.widget-video
