@@ -56,6 +56,8 @@ $(document).ready(function() {
         });
         $(this)[0].addEventListener("loadedmetadata", function() {
             $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+            var buffered = Math.round($(this).closest(".widget-video").find("video")[0].buffered.end(0));
+            $(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
         });
         // loading
         $(this)[0].addEventListener("progress", function() {

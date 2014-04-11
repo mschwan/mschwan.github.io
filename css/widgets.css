@@ -291,7 +291,7 @@ div.widget-video-fullscreen
     height: 2em;
     text-align: center;
     
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 div.widget-video-play-pause:hover,
