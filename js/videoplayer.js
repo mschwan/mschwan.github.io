@@ -13,6 +13,7 @@ $(document).ready(function() {
     //var $seek = $(".widget-video").find(".widget-video-seek");
     var $mute = $(".widget-video").find(".widget-video-mute");
     var $fullscreen = $(".widget-video").find(".widget-video-fullscreen");
+    var isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
     // FIXME: The following icon variables can only be used at one place in the DOM, otherwise some will be destroyed!
     /*var $iconPlay = $("<i>", {
         class: "fa fa-play"
@@ -26,6 +27,28 @@ $(document).ready(function() {
     var $iconVolume = $("<i>", {
         class: "fa fa-volume-up"
     });*/
+    
+    /*  FUNCTIONS
+        ---------  */
+    function enterFullscreen(element) {
+        if(element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if(element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if(element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        }
+    }
+    
+    function exitFullscreen() {
+        if(document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if(document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if(document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
     
     /*  CONSTRUCTORS
         ------------  */
@@ -119,23 +142,13 @@ $(document).ready(function() {
     });
     
     $fullscreen.on("click", function() {
-        if(!document.fullscreenElement || !document.mozFullScreenElement || !document.webkitFullscreenElement) {
-            if ($(this).closest(".widget-video").find("video")[0].requestFullscreen) {
-                $(this).closest(".widget-video").find("video")[0].requestFullscreen();
-            } else if ($(this).closest(".widget-video").find("video")[0].mozRequestFullScreen) {
-                $(this).closest(".widget-video").find("video")[0].mozRequestFullScreen();
-            } else if ($(this).closest(".widget-video").find("video")[0].webkitRequestFullscreen) {
-                $(this).closest(".widget-video").find("video")[0].webkitRequestFullscreen();
-            }
+        if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
+            enterFullscreen($(this).closest(".widget-video")[0]);
+            $(this).html('<i class="fa fa-compress"></i>');
         }
         else {
-            if ($(this).closest(".widget-video").find("video")[0].exitFullscreen) {
-                $(this).closest(".widget-video").find("video")[0].exitFullscreen();
-            } else if ($(this).closest(".widget-video").find("video")[0].mozCancelFullScreen) {
-                $(this).closest(".widget-video").find("video")[0].mozCancelFullScreen();
-            } else if ($(this).closest(".widget-video").find("video")[0].webkitExitFullscreen) {
-                $(this).closest(".widget-video").find("video")[0].webkitExitFullscreen();
-            }
+            exitFullscreen();
+            $(this).html('<i class="fa fa-expand"></i>');
         }
     });
     
@@ -151,7 +164,7 @@ $(document).ready(function() {
     });
     
     $video.on("dblclick", function() {
-        if(!document.fullscreenElement || !document.mozFullScreenElement || !document.webkitFullscreenElement) {
+        if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
             if ($(this)[0].requestFullscreen) {
                 $(this)[0].requestFullscreen();
             } else if ($(this)[0].mozRequestFullScreen) {
@@ -159,17 +172,24 @@ $(document).ready(function() {
             } else if ($(this)[0].webkitRequestFullscreen) {
                 $(this)[0].webkitRequestFullscreen();
             }
+            $(this).html('<i class="fa fa-compress"></i>');
         }
         else {
-            if ($(this)[0].exitFullscreen) {
-                $(this)[0].exitFullscreen();
-            } else if ($(this)[0].mozCancelFullScreen) {
-                $(this)[0].mozCancelFullScreen();
-            } else if ($(this)[0].webkitExitFullscreen) {
-                $(this)[0].webkitExitFullscreen();
-            }
+            exitFullscreen();
+            $(this).html('<i class="fa fa-expand"></i>');
         }
     });
+    
+    /*setTimeout(function() {
+        $video.on("mousemove", function() {
+            if($(this).css("cursor") == "none") {
+                $(this).css("cursor", "pointer");
+            } else {
+                $(this).css("cursor", "none");
+            }
+        });
+    }, 1000);*/
+    
     
 /*
     // icons

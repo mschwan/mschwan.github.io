@@ -316,10 +316,13 @@ div.widget-video
     position: relative;
     padding-bottom: 8px;
     margin-bottom: -1em;
+    
+    /*border: 1px solid red;*/
 }
 
 div.widget-video video
 {
+    position: relative;
     width: 100%;
     height: auto;
     outline: none;
@@ -420,5 +423,41 @@ div.widget-video-volume
     width: 5em;
     height: 1em;
     text-align: center;    
+}
+
+/* TESTING */
+
+.widget-video:-moz-full-screen
+{
+    background-color: #000;
+    line-height: 0;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 0px;
+    margin-bottom: -10em;
+}
+
+.widget-video:-moz-full-screen .widget-video-controls
+{
+    position: relative;
+    top: -3em;
+}
+
+.widget-video:-moz-full-screen .widget-video-seek
+{
+    position: relative;
+    bottom: 2.5em;
+}
+
+.widget-video:-moz-full-screen div.widget-video-seek:hover,
+.widget-video:-moz-full-screen video:hover + div.widget-video-seek
+{
+    height: 1em;
+    bottom: 3em;
+}
+
+.widget-video:-moz-full-screen video
+{
+    height: 100%;
 }
 
