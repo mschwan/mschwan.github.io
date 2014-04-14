@@ -13,7 +13,7 @@ $(document).ready(function() {
     //var $seek = $(".widget-video").find(".widget-video-seek");
     var $mute = $(".widget-video").find(".widget-video-mute");
     var $fullscreen = $(".widget-video").find(".widget-video-fullscreen");
-    var isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+    //var isFullscreen = (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement);
     // FIXME: The following icon variables can only be used at one place in the DOM, otherwise some will be destroyed!
     /*var $iconPlay = $("<i>", {
         class: "fa fa-play"
@@ -145,10 +145,11 @@ $(document).ready(function() {
         if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
             enterFullscreen($(this).closest(".widget-video")[0]);
             $(this).html('<i class="fa fa-compress"></i>');
-        }
-        else {
+            $(".widget-video-seek").css("bottom", "2.5em");
+        } else {
             exitFullscreen();
             $(this).html('<i class="fa fa-expand"></i>');
+            $(".widget-video-seek").css("bottom", "0.5em");
         }
     });
     
@@ -156,8 +157,7 @@ $(document).ready(function() {
         if($(this)[0].paused) {
             $(this)[0].play();
             $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html('<i class="fa fa-pause"></i>');
-        }
-        else {
+        } else {
             $(this)[0].pause();
             $(this).closest(".widget-video").find(".widget-video-controls").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
         }
@@ -165,30 +165,56 @@ $(document).ready(function() {
     
     $video.on("dblclick", function() {
         if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
-            if ($(this)[0].requestFullscreen) {
-                $(this)[0].requestFullscreen();
-            } else if ($(this)[0].mozRequestFullScreen) {
-                $(this)[0].mozRequestFullScreen();
-            } else if ($(this)[0].webkitRequestFullscreen) {
-                $(this)[0].webkitRequestFullscreen();
-            }
-            $(this).html('<i class="fa fa-compress"></i>');
-        }
-        else {
+            enterFullscreen($(this).closest(".widget-video")[0]);
+            $(this).closest(".widget-video").find(".widget-video-fullscreen").html('<i class="fa fa-compress"></i>');
+            $(".widget-video-seek").css("bottom", "2.5em");
+        } else {
             exitFullscreen();
-            $(this).html('<i class="fa fa-expand"></i>');
+            $(this).closest(".widget-video").find(".widget-video-fullscreen").html('<i class="fa fa-expand"></i>');
+            $(".widget-video-seek").css("bottom", "0.5em");
         }
     });
     
-    /*setTimeout(function() {
-        $video.on("mousemove", function() {
-            if($(this).css("cursor") == "none") {
-                $(this).css("cursor", "pointer");
+    var idleTimer;
+    //var forceMouseHide = false;
+
+    //$video.css("cursor", "none");
+
+    $video.mousemove(function() {
+        $video.css("cursor", "pointer");
+        if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
+            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "1em");
+        } else {
+            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "3em");
+        }
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(function() {
+            $("video").css("cursor", "none");
+            if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
+                $(".widget-video-seek").css("bottom", "0.5em");
             } else {
-                $(this).css("cursor", "none");
+                $(".widget-video-seek").css("bottom", "2.5em");
             }
-        });
-    }, 1000);*/
+        }, 1000);
+    });
+    
+    $video.mouseout(function() {
+        if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
+            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "0.5em");
+        } else {
+            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "2.5em");
+        }
+    });
+    
+    /*$video.on("mousemove", function(event) {
+        var pos
+        while()
+        if($(this).css("cursor") == "none") {
+            $(this).css("cursor", "pointer");
+        } else {
+            $(this).css("cursor", "none");
+        }
+    });*/
     
     
 /*
