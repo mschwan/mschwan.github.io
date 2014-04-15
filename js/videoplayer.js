@@ -84,8 +84,9 @@ $(document).ready(function() {
         });
         // loading
         $(this)[0].addEventListener("progress", function() {
-            var buffered = $(this).closest(".widget-video").find("video")[0].buffered.end(0) / $(this).closest(".widget-video").find("video")[0].duration;
-            $(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
+            var bufferedStart = $(this).closest(".widget-video").find("video")[0].buffered.start(0);
+            var bufferedEnd = $(this).closest(".widget-video").find("video")[0].buffered.end(0);
+            $(this).closest(".widget-video").find(".widget-video-loaded").text(bufferedStart).append("_"+bufferedEnd);
         });
         // mute
         if($(this)[0].muted) {
