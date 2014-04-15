@@ -84,7 +84,7 @@ $(document).ready(function() {
         });
         // loading
         $(this)[0].addEventListener("progress", function() {
-            var buffered = Math.round($(this).closest(".widget-video").find("video")[0].buffered.end(0));
+            var buffered = $(this).closest(".widget-video").find("video")[0].buffered.end(0) / $(this).closest(".widget-video").find("video")[0].duration;
             $(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
         });
         // mute
