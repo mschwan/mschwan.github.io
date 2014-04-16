@@ -55,7 +55,7 @@ $(document).ready(function() {
     $video.each(function() {
         // misc
         $(this)[0].removeAttribute("controls");
-        //$(this)[0].("preload", "metadata");
+        //$(this)[0].attr("preload", "metadata");
         // play pause
         $(this)[0].addEventListener("ended", function() {
             $(this).closest(".widget-video").find(".widget-video-play-pause").html('<i class="fa fa-play"></i>');
@@ -74,32 +74,31 @@ $(document).ready(function() {
             }
         });
         $(this)[0].addEventListener("timeupdate", function() {
-            $(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
+            //$(this).closest(".widget-video").find(".widget-video-currenttime").text(Math.round($(this)[0].currentTime));
             $(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
         });
         $(this)[0].addEventListener("loadedmetadata", function() {
-            $(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
-            var buffered = Math.round($(this).closest(".widget-video").find("video")[0].buffered.end(0));
-            $(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
+            if($(this)[0].muted) {
+                $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');
+            } else {
+                $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-up"></i>');
+            }
+            //$(this).closest(".widget-video").find(".widget-video-seek").slider("value", $(this)[0].currentTime);
+            //$(this).closest(".widget-video").find(".widget-video-endtime").text(Math.round($(this)[0].duration));
+            //var buffered = Math.round($(this).closest(".widget-video").find("video")[0].buffered.end(0));
+            //$(this).closest(".widget-video").find(".widget-video-loaded").text(buffered);
         });
         // loading
-        $(this)[0].addEventListener("progress", function() {
+        /*$(this)[0].addEventListener("progress", function() {
             var bufferedStart = $(this).closest(".widget-video").find("video")[0].buffered.start(0);
             var bufferedEnd = $(this).closest(".widget-video").find("video")[0].buffered.end(0);
             $(this).closest(".widget-video").find(".widget-video-loaded").text(bufferedStart).append("_"+bufferedEnd);
-        });
+        });*/
         // mute
-        if($(this)[0].muted) {
-            $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');
-        }
-        else {
-            $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-up"></i>');
-        }
         $(this)[0].addEventListener("volumechange", function() {
             if($(this)[0].muted) {
                 $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-off"></i>');
-            }
-            else {
+            } else {
                 $(this).closest(".widget-video").find(".widget-video-mute").html('<i class="fa fa-volume-up"></i>');
             }
         });
@@ -164,7 +163,7 @@ $(document).ready(function() {
         }
     });
     
-    $video.on("dblclick", function() {
+    /*$video.on("dblclick", function() {
         if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
             enterFullscreen($(this).closest(".widget-video")[0]);
             $(this).closest(".widget-video").find(".widget-video-fullscreen").html('<i class="fa fa-compress"></i>');
@@ -174,37 +173,15 @@ $(document).ready(function() {
             $(this).closest(".widget-video").find(".widget-video-fullscreen").html('<i class="fa fa-expand"></i>');
             $(".widget-video-seek").css("bottom", "0.5em");
         }
-    });
+    });*/
     
     var idleTimer;
-    //var forceMouseHide = false;
-
-    //$video.css("cursor", "none");
-
     $video.mousemove(function() {
         $video.css("cursor", "pointer");
-        if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
-            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "1em");
-        } else {
-            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "3em");
-        }
         clearTimeout(idleTimer);
         idleTimer = setTimeout(function() {
             $("video").css("cursor", "none");
-            if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
-                $(".widget-video-seek").css("bottom", "0.5em");
-            } else {
-                $(".widget-video-seek").css("bottom", "2.5em");
-            }
         }, 1000);
-    });
-    
-    $video.mouseout(function() {
-        if(!(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement)) {
-            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "0.5em");
-        } else {
-            $(this).closest(".widget-video").find(".widget-video-seek").css("bottom", "2.5em");
-        }
     });
     
     /*$video.on("mousemove", function(event) {
