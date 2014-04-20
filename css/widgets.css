@@ -268,16 +268,13 @@ div.content i.fa
 div.widget-video
 {
     line-height: 0;
-    /*overflow: hidden;*/
     position: relative;
-    /*padding-bottom: 8px;*/
     margin: 8px 0px;
-    
-    /*border: 1px solid red;*/
 }
 
 div.widget-video video
 {
+    background-color: #000;
     position: relative;
     width: 100%;
     height: auto;
@@ -285,8 +282,6 @@ div.widget-video video
     cursor: pointer;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    
-    /*border: 1px solid red;*/
 }
 
 div.widget-video-controls
@@ -297,11 +292,21 @@ div.widget-video-controls
     line-height: 2em;
     height: 2em;
     cursor: default;
-    /*overflow: hidden;*/
     position: relative;
     top: 0em;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+}
+
+div.widget-video-play-pause,
+div.widget-video-mute,
+div.widget-video-fullscreen
+{
+    cursor: pointer;
+    width: 3em;
+    height: 2em;
+    text-align: center;
+    transition: color 0.2s;
 }
 
 div.widget-video-seek
@@ -311,23 +316,12 @@ div.widget-video-seek
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-left: 0em;
-    margin-right: 1em;
-    width: calc(100% - 12em);
+    margin-right: 0em;
+    width: calc(100% - 14em);
     cursor: col-resize;
     background-color: #888;
     border-radius: 0.25em;
     overflow: hidden;
-}
-
-div.widget-video-play-pause
-{
-    cursor: pointer;
-    width: 3em;
-    height: 2em;
-    text-align: center;
-    margin-left: 0;
-    margin-right: auto;
-    transition: color 0.2s;
 }
 
 div.widget-video-volume
@@ -341,57 +335,4 @@ div.widget-video-volume
     border-radius: 0.25em;
     overflow: hidden;
 }
-
-div.widget-video-fullscreen
-{
-    cursor: pointer;
-    width: 2em;
-    height: 2em;
-    margin-right: 0;
-    margin-left: auto;
-    text-align: center;
-    transition: color 0.2s;
-}
-
-/* VIDEO FULLSCREEN */
-
-/*.widget-video:-moz-full-screen,
-.widget-video:-webkit-full-screen
-{
-    background-color: #000;
-    line-height: 0;
-    overflow: hidden;
-    position: relative;
-    padding-bottom: 0px;
-    margin-bottom: -10em;
-}
-
-.widget-video:-moz-full-screen .widget-video-controls,
-.widget-video:-webkit-full-screen .widget-video-controls
-{
-    position: relative;
-    top: -3em;
-}
-
-.widget-video:-moz-full-screen .widget-video-seek,
-.widget-video:-webkit-full-screen .widget-video-seek
-{
-    position: relative;
-    bottom: 2.5em;
-}
-
-.widget-video:-moz-full-screen div.widget-video-seek:hover,
-.widget-video:-moz-full-screen video:hover + div.widget-video-seek,
-.widget-video:-webkit-full-screen div.widget-video-seek:hover,
-.widget-video:-webkit-full-screen video:hover + div.widget-video-seek
-{
-    height: 1em;
-    bottom: 3em;
-}
-
-.widget-video:-moz-full-screen video,
-.widget-video:-webkit-full-screen video
-{
-    height: 100%;
-}*/
 
