@@ -1,5 +1,5 @@
 Title: Title
-Date: 2016-05-21 18:32
+Date: 2016-05-21
 Category: Category
 Tags: tag1, tag2
 Author: Author
