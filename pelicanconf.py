@@ -7,7 +7,7 @@ SITENAME = u'mschwan'
 SITEURL = ''
 
 PATH = 'content'
-THEME = 'simple'
+THEME = 'pelican-twitchy'
 
 TIMEZONE = 'Europe/Paris'
 DATE_FORMATS = { 'en': '%d/%m/%Y' }
