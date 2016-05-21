@@ -11,6 +11,7 @@ PATH = 'content'
 #OUTPUT_PATH = 'output'
 
 TIMEZONE = 'Europe/Paris'
+DATE_FORMATS = { 'en': '%d/%m/%Y' }
 
 DEFAULT_LANG = u'en'
 
