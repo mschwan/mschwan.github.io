@@ -7,8 +7,7 @@ SITENAME = u'mschwan'
 SITEURL = ''
 
 PATH = 'content'
-#THEME = 'themes/bootstrap2'
-#OUTPUT_PATH = 'output'
+THEME = 'simple'
 
 TIMEZONE = 'Europe/Paris'
 DATE_FORMATS = { 'en': '%d/%m/%Y' }
