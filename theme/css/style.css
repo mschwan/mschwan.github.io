@@ -1,7 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 
 body {
     font-family: 'Lato', sans-serif;
+    font-size: 16pt;
     color: #222;
 }
 
@@ -18,12 +20,10 @@ a:visited {
     color: #000;
 }
 
-/*h1 a { color: inherit !important }
-h2 a { color: inherit !important }
-h3 a { color: inherit !important }
-h4 a { color: inherit !important }
-h5 a { color: inherit !important }
-h6 a { color: inherit !important }*/
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2rem;
+}
 
 #menu li {
     display: inline;
