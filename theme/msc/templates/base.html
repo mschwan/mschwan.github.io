@@ -1,6 +1,22 @@
-{% extends "!simple/base.html" %}
-
-{% block head %}
-{{ super() }}
-       <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
-{% endblock %}
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+    <head>
+        {% block head %}
+        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/style.css" />
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="{{ SITEURL }}/">{{ SITENAME }} {{ SITESUBTITLE }}</a>
+            </h1>
+        </header>
+        {% block content %}
+        {% endblock content %}
+        <footer>
+            Powered by <a href="http://getpelican.com">Pelican</a> and <a href="https://pages.github.com">Github Pages</a>.
+        </footer>
+    </body>
+</html>
