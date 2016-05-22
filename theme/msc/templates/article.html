@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="panel">
+    <a href="{{ SITEURL }}/">{{ SITENAME }} {{ SITESUBTITLE }}</a>
+    ::
+    <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+</div>
+<article>
+    <header>
+        {{ article.locale_date }}
+        <div class="summary">
+            {{ article.summary }}
+        </div>
+    </header>
+    <section>
+        {{ article.content }}
+    </section>
+</article>
+{% endblock content %}
