@@ -1,11 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 
+:root {
+    font-size: 16pt;
+}
+
 body {
     font-family: 'Lato', sans-serif;
-    font-size: 16pt;
     color: #222;
-    background-color: #fcfcfc;
+    background-color: #fff;
     margin: 0;
     padding: 0;
 }
@@ -57,7 +60,7 @@ article {
     width: calc(100% - 2em);
     min-width: calc(320px - 2em);
     max-width: 640px;
-    padding: 9rem 1em 1em 1em;
+    padding: 11rem 1em 1em 1em;
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid #f0f0f0;
@@ -67,5 +70,15 @@ article {
 
 article header div.summary {
     font-style: italic;
+}
+
+footer {
+    width: calc(100% - 2em);
+    min-width: calc(320px - 2em);
+    max-width: 640px;
+    padding: 1em;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: none;
 }
 
