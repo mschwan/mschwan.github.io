@@ -1,11 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 
+:root {
+    font-size: 16pt;
+}
+
 body {
     font-family: 'Lato', sans-serif;
-    font-size: 16pt;
     color: #222;
-    background-color: #fcfcfc;
+    background-color: #fff;
     margin: 0;
     padding: 0;
 }
@@ -23,15 +26,18 @@ a:visited  {
     border-color: #000;
 }
 
-h1,
-h2,
-h3 {
+h1 {
     font-family: 'Roboto Slab', serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1rem;
 }
 
 .panel {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Roboto Slab', serif;
     width: calc(100% - 2em);
     padding: 0.5em 1em;
@@ -61,11 +67,37 @@ article {
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid #f0f0f0;
-    border-bottom: none;
     border-top: none;
 }
 
 article header div.summary {
     font-style: italic;
+}
+
+footer {
+    width: calc(100% - 2em);
+    min-width: calc(320px - 2em);
+    max-width: 640px;
+    padding: 1em;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: none;
+    border-bottom: none;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.entry {
+    width: calc(100% - 2em);
+    min-width: calc(320px - 2em);
+    max-width: 640px;
+    padding: 1em;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    border-top: none;
+}
+
+.panel + .entry {
+    padding: 5rem 1em 1em 1em;
 }
 
