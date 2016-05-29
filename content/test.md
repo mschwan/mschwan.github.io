@@ -1,8 +1,6 @@
 Title: An extremely long title intrusively spamming the top panel!
 Date: 2016-05-21
-Category: Category
-Tags: tag1, tag2
-Author: Author
+Category: Testing
 Summary: Summary of the Lorem Ipsum testing article.
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
