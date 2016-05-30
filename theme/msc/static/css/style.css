@@ -3,6 +3,7 @@
 
 :root {
     font-size: 16pt;
+    line-height: 1.3;
 }
 
 body {
@@ -93,9 +94,32 @@ footer {
     max-width: 640px;
     padding: 1em;
     margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-top: none;
 }
 
+.paginator {
+    width: calc(100% - 2em);
+    min-width: calc(320px - 2em);
+    max-width: 640px;
+    padding: 1em;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paginator a {
+    padding: 0.5em 0.75em;
+    color: #444;
+    border: 0.1em solid rgba(0, 0, 0, 0.05);
+}
+
+.paginator span {
+    padding: 0.5em 0.75em;
+    color: rgba(0, 0, 0, 0.05);
+    border: 0.1em solid rgba(0, 0, 0, 0.05);
+    cursor: default;
+}
 
