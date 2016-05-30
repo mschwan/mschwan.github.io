@@ -98,6 +98,11 @@ footer {
     border-top: none;
 }
 
+time {
+    color: #ccc;
+    cursor: default;
+}
+
 .paginator {
     width: calc(100% - 2em);
     min-width: calc(320px - 2em);
@@ -118,7 +123,7 @@ footer {
 
 .paginator span {
     padding: 0.5em 0.75em;
-    color: rgba(0, 0, 0, 0.05);
+    color: #ccc;
     border: 0.1em solid rgba(0, 0, 0, 0.05);
     cursor: default;
 }
