@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="panel">
-    <a href="{{ SITEURL }}/">{{ SITENAME }} {{ SITESUBTITLE }}</a>
+    <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
     ::
-    <a href="{{ SITEURL }}/">Index</a>
+    <span class="title">Index</span>
 </div>
 
 {% for article in articles_page.object_list %}
@@ -21,4 +21,7 @@
     </section>
 </div>
 {% endfor %}
+{% if articles_page.has_other_pages() %}
+    {% include "pagination.html" %}
+{% endif %}
 {% endblock content %}

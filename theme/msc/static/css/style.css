@@ -43,18 +43,19 @@ h2 {
     padding: 0.5em 1em;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 1px rgba(0, 0, 0, 0.05);
-    position: fixed;
-    top: 0;
-    left: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.panel a {
+.panel > a {
     text-decoration: none;
     border: none;
 }
 
-.panel a:last-child {
+.panel > a:hover {
+    border-bottom: 0.1em solid #000;
+}
+
+.panel > .title {
     color: #000;
     font-weight: 700;
 }
@@ -63,7 +64,7 @@ article {
     width: calc(100% - 2em);
     min-width: calc(320px - 2em);
     max-width: 640px;
-    padding: 9rem 1em 1em 1em;
+    padding: 1em;
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid #f0f0f0;
@@ -97,7 +98,4 @@ footer {
     border-top: none;
 }
 
-.panel + .entry {
-    padding: 5rem 1em 1em 1em;
-}
 
