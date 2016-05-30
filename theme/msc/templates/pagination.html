@@ -4,7 +4,7 @@
         {% if articles_page.has_previous() %}
         <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&larr;</a>
         {% else %}
-        <span>&larr;</a>
+        <span>&larr;</span>
         {% endif %}
     </div>
     <div>
@@ -14,7 +14,7 @@
         {% if articles_page.has_next() %}
         <a href="{{ SITEURL }}/{{ articles_next_page.url }}">&rarr;</a>
         {% else %}
-        <span>&rarr;</a>
+        <span>&rarr;</span>
         {% endif %}
     </div>
 </div>
