@@ -6,7 +6,9 @@
     line-height: 1.3;
 }
 
-@media handheld {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 120dpi) {
     :root {
         font-size: 2em;
     }
